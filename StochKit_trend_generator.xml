@@ -1,0 +1,951 @@
+﻿<!--For any questions regarding this code please contact Mohammad Soltani (msoltani@udel.edu)-->
+<!--kx is negative feedback strength-->
+<!--ky is positive feedback strength-->
+<!--kz is basal production rate-->
+<!--dx is degradation rate-->
+<!--tx is delay in negatice feedback circuit-->
+<!--ktx rate of conversion reactions in negative feedback circuit-->
+<!--ty is delay in positive feedback circuit-->
+<!--kty is rate of conversion reactions in positive feedback circuit-->
+<!--S1 denotes Z^a, S20 to S29 denote X_1^a to X_10^a, S30 to S39 denote Y_1^a to Y_10^a, -->
+<!--S4 denotes Z^b, S50 to S59 denote X_1^b to X_10^b, S60 to S69 denote Y_1^b to Y_10^b, -->
+
+<Model>
+  <Description>Anzyme Reaction</Description>
+  <NumberOfReactions>48</NumberOfReactions>
+  <NumberOfSpecies>42</NumberOfSpecies>
+
+  <ParametersList>
+
+    <Parameter>
+      <Id>kx</Id>
+      <Expression>0.6</Expression>
+    </Parameter>
+
+    <Parameter>
+      <Id>ky</Id>
+      <Expression>0.2</Expression>
+    </Parameter>
+
+    <Parameter>
+      <Id>kz</Id>
+      <Expression>26.5</Expression>
+    </Parameter>
+
+    <Parameter>
+      <Id>dx</Id>
+      <Expression>0.2</Expression>
+    </Parameter>
+
+    <Parameter>
+      <Id>tx</Id>
+      <Expression>18</Expression>
+    </Parameter>
+
+    <Parameter>
+      <Id>ktx</Id>
+      <Expression>10*(1/tx)</Expression>
+    </Parameter>
+
+    <Parameter>
+      <Id>ty</Id>
+      <Expression>36</Expression>
+    </Parameter>
+
+    <Parameter>
+      <Id>kty</Id>
+      <Expression>10*(1/ty)</Expression>
+    </Parameter>
+
+  </ParametersList>
+
+
+  <ReactionsList>
+
+   <Reaction>
+      <Id>R1</Id>
+      <Description>  null -> S1 </Description>
+      <Type>customized</Type>
+      <PropensityFunction>kz - (kx * S29) + (ky *S69) </PropensityFunction>
+      <Reactants>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S1" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+    <Reaction>
+      <Id>R2</Id>
+      <Description>   S1 -> null </Description>
+      <Type>mass-action</Type>
+      <Rate>dx</Rate>
+      <Reactants>
+        <SpeciesReference id="S1" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R3</Id>
+      <Description>  S1 -> S1 + S20 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S1" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S1" stoichiometry="1"/>
+        <SpeciesReference id="S20" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R4</Id>
+      <Description>  S20 -> S21 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S20" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S21" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R5</Id>
+      <Description>  S21 -> S22 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S21" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S22" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R6</Id>
+      <Description>  S22 -> S23 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S22" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S23" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R7</Id>
+      <Description>  S23 -> S24 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S23" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S24" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R8</Id>
+      <Description>  S24 -> S25 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S24" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S25" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R9</Id>
+      <Description>  S25 -> S26 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S25" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S26" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R10</Id>
+      <Description>  S26 -> S27 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S26" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S27" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R11</Id>
+      <Description>  S27 -> S28 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S27" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S28" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R12</Id>
+      <Description>  S28 -> S29 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S28" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S29" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+    <Reaction>
+      <Id>R13</Id>
+      <Description>   S29 -> null </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S29" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R14</Id>
+      <Description>  S1 -> S1 + S30 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S1" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S1" stoichiometry="1"/>
+        <SpeciesReference id="S30" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R15</Id>
+      <Description>  S30 -> S31 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S30" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S31" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R16</Id>
+      <Description>  S31 -> S32 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S31" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S32" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R17</Id>
+      <Description>  S32 -> S33 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S32" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S33" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R18</Id>
+      <Description>  S33 -> S34 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S33" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S34" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R19</Id>
+      <Description>  S34 -> S35 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S34" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S35" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R20</Id>
+      <Description>  S35 -> S36 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S35" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S36" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R21</Id>
+      <Description>  S36 -> S37 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S36" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S37" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R22</Id>
+      <Description>  S37 -> S38 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S37" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S38" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R23</Id>
+      <Description>  S38 -> S39 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S38" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S39" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+
+    <Reaction>
+      <Id>R24</Id>
+      <Description>   S39-> null </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S39" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R25</Id>
+      <Description>  null -> S4 </Description>
+      <Type>customized</Type>
+      <PropensityFunction>kz - kx * S59 + ky *S39 </PropensityFunction>
+      <Reactants>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S4" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+    <Reaction>
+      <Id>R26</Id>
+      <Description>   S4 -> null </Description>
+      <Type>mass-action</Type>
+      <Rate>dx</Rate>
+      <Reactants>
+        <SpeciesReference id="S4" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R27</Id>
+      <Description>  S4 -> S4 + S50 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S4" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S4" stoichiometry="1"/>
+        <SpeciesReference id="S50" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R28</Id>
+      <Description>  S50 -> S51 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S50" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S51" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R29</Id>
+      <Description>  S51 -> S52 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S51" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S52" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R30</Id>
+      <Description>  S52 -> S53 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S52" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S53" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R31</Id>
+      <Description>  S53 -> S54 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S53" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S54" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R32</Id>
+      <Description>  S54 -> S55 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S54" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S55" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R33</Id>
+      <Description>  S55 -> S56 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S55" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S56" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R34</Id>
+      <Description>  S56 -> S57 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S56" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S57" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R35</Id>
+      <Description>  S57 -> S58 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S57" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S58" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R36</Id>
+      <Description>  S58 -> S59 </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S58" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S59" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+    <Reaction>
+      <Id>R37</Id>
+      <Description>   S59 -> null </Description>
+      <Type>mass-action</Type>
+      <Rate>ktx</Rate>
+      <Reactants>
+        <SpeciesReference id="S59" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R38</Id>
+      <Description>  S4 -> S4 + S60 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S4" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S4" stoichiometry="1"/>
+        <SpeciesReference id="S60" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R39</Id>
+      <Description>  S60 -> S61 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S60" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S61" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R40</Id>
+      <Description>  S61 -> S62 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S61" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S62" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R41</Id>
+      <Description>  S62 -> S63 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S62" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S63" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+
+   <Reaction>
+      <Id>R42</Id>
+      <Description>  S63 -> S64 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S63" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S64" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R43</Id>
+      <Description>  S64 -> S65 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S64" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S65" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R44</Id>
+      <Description>  S65 -> S66 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S65" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S66" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R45</Id>
+      <Description>  S66 -> S67 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S66" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S67" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R46</Id>
+      <Description>  S67 -> S68 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S67" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S68" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+   <Reaction>
+      <Id>R47</Id>
+      <Description>  S68 -> S69 </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S68" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+        <SpeciesReference id="S69" stoichiometry="1"/>
+      </Products>
+    </Reaction>
+
+    <Reaction>
+      <Id>R48</Id>
+      <Description>   S69-> null </Description>
+      <Type>mass-action</Type>
+      <Rate>kty</Rate>
+      <Reactants>
+        <SpeciesReference id="S69" stoichiometry="1"/>
+      </Reactants>
+      <Products>
+      </Products>
+    </Reaction>
+
+
+ </ReactionsList>
+
+
+  <SpeciesList>
+
+    <Species>
+      <Id>S1</Id>
+      <Description>Species #1</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+     <Species>
+      <Id>S20</Id>
+      <Description>Species #2</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S21</Id>
+      <Description>Species #3</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S22</Id>
+      <Description>Species #4</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S23</Id>
+      <Description>Species #5</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+     <Species>
+      <Id>S24</Id>
+      <Description>Species #6</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S25</Id>
+      <Description>Species #7</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S26</Id>
+      <Description>Species #8</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S27</Id>
+      <Description>Species #9</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S28</Id>
+      <Description>Species #10</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S29</Id>
+      <Description>Species #11</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S30</Id>
+      <Description>Species #12</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S31</Id>
+      <Description>Species #13</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S32</Id>
+      <Description>Species #14</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S33</Id>
+      <Description>Species #15</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+
+     <Species>
+      <Id>S34</Id>
+      <Description>Species #16</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S35</Id>
+      <Description>Species #17</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S36</Id>
+      <Description>Species #18</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S37</Id>
+      <Description>Species #19</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S38</Id>
+      <Description>Species #20</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S39</Id>
+      <Description>Species #21</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S4</Id>
+      <Description>Species #22</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S50</Id>
+      <Description>Species #23</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+
+    <Species>
+      <Id>S51</Id>
+      <Description>Species #24</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S52</Id>
+      <Description>Species #25</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S53</Id>
+      <Description>Species #26</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+     <Species>
+      <Id>S54</Id>
+      <Description>Species #27</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S55</Id>
+      <Description>Species #28</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S56</Id>
+      <Description>Species #29</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S57</Id>
+      <Description>Species #30</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S58</Id>
+      <Description>Species #31</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S59</Id>
+      <Description>Species #32</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+
+    <Species>
+      <Id>S60</Id>
+      <Description>Species #33</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S61</Id>
+      <Description>Species #34</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S62</Id>
+      <Description>Species #35</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S63</Id>
+      <Description>Species #36</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+     <Species>
+      <Id>S64</Id>
+      <Description>Species #37</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S65</Id>
+      <Description>Species #38</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S66</Id>
+      <Description>Species #39</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S67</Id>
+      <Description>Species #40</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S68</Id>
+      <Description>Species #41</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+    <Species>
+      <Id>S69</Id>
+      <Description>Species #42</Description>
+      <InitialPopulation>0</InitialPopulation>
+    </Species>
+
+
+  </SpeciesList>
+
+</Model>
